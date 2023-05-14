@@ -1,45 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
-namespace generator
+namespace Laba_5
 {
-    class CharGenerator 
-    {
-        private string syms = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя"; 
-        private char[] data;
-        private int size;
-        private Random random = new Random();
-        public CharGenerator() 
-        {
-           size = syms.Length;
-           data = syms.ToCharArray(); 
-        }
-        public char getSym() 
-        {
-           return data[random.Next(0, size)]; 
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            CharGenerator gen = new CharGenerator();
-            SortedDictionary<char, int> stat = new SortedDictionary<char, int>();
-            for(int i = 0; i < 1000; i++) 
-            {
-               char ch = gen.getSym(); 
-               if (stat.ContainsKey(ch))
-                  stat[ch]++;
-               else
-                  stat.Add(ch, 1); Console.Write(ch);
-            }
-            Console.Write('\n');
-            foreach (KeyValuePair<char, int> entry in stat) 
-            {
-                 Console.WriteLine("{0} - {1}",entry.Key,entry.Value/1000.0); 
-            }
-            
+            CharPairGenerator g1 = new CharPairGenerator();
+            string text1 = g1.getText(1000);
+            StreamWriter sr1 = new StreamWriter("Text_from_pairs_of_chars.txt");
+            sr1.Write(text1);
+            sr1.Close();
+
+            WordGenerator g2 = new WordGenerator();
+            string text2 = g2.getText(1000);
+            StreamWriter sr2 = new StreamWriter("Text_from_words.txt");
+            sr2.Write(text2);
+            sr2.Close();
+
+            WordPairGenerator g3 = new WordPairGenerator();
+            string text3 = g3.getText(1000);
+            StreamWriter sr3 = new StreamWriter("Text_from_pairs_of_words.txt");
+            sr3.Write(text3);
+            sr3.Close();
+
+
         }
     }
 }
-
