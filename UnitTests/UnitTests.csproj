@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Laba 5\Laba 5.csproj" />
+    <ProjectReference Include="..\ProjCharGenerator\ProjCharGenerator.csproj" />
   </ItemGroup>
 
 </Project>
