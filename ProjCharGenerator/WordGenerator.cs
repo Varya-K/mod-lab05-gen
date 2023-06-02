@@ -19,7 +19,7 @@ namespace Laba_5
         {
 
             //Заполнение массива весов из файла и формирование массива верхних границ для каждого символа
-            StreamReader file = new StreamReader("Words_and_Weights.txt");
+            StreamReader file = new StreamReader("Words_and_weights.txt");
             List<string> words = new List<string>();
             List<int> w = new List<int>();
             string s;
