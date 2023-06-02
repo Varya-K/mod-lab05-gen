@@ -15,20 +15,20 @@ namespace UnitTests
         public void TestCorrectReadingBigram()
         {
             CharPairGenerator g = new CharPairGenerator();
-            string syms = "àáâãäåæçèéêëìíîïğñòóôõö÷øùûüışÿ";
+            string syms = "Ğ°Ğ±Ğ²Ğ³Ğ´ĞµĞ¶Ğ·Ğ¸Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰Ñ‹ÑŒÑÑÑ";
             int[,] bigram = g.getWeightMatrix;
-            Assert.AreEqual(bigram[syms.IndexOf('÷'), syms.IndexOf('ò')], 7);
-            Assert.AreEqual(bigram[syms.IndexOf('ó'), syms.IndexOf('é')], 0);
-            Assert.AreEqual(bigram[syms.IndexOf('î'), syms.IndexOf('â')], 84);
-            Assert.AreEqual(bigram[syms.IndexOf('è'), syms.IndexOf('ÿ')], 17);
-            Assert.AreEqual(bigram[syms.IndexOf('û'), syms.IndexOf('õ')], 16);
+            Assert.AreEqual(bigram[syms.IndexOf('Ñ‡'), syms.IndexOf('Ñ‚')], 7);
+            Assert.AreEqual(bigram[syms.IndexOf('Ñƒ'), syms.IndexOf('Ğ¹')], 0);
+            Assert.AreEqual(bigram[syms.IndexOf('Ğ¾'), syms.IndexOf('Ğ²')], 84);
+            Assert.AreEqual(bigram[syms.IndexOf('Ğ¸'), syms.IndexOf('Ñ')], 17);
+            Assert.AreEqual(bigram[syms.IndexOf('Ñ‹'), syms.IndexOf('Ñ…')], 16);
         }
 
         [TestMethod]
         public void TestExsitCharPair()
         {
             CharPairGenerator g = new CharPairGenerator();
-            string syms = "àáâãäåæçèéêëìíîïğñòóôõö÷øùûüışÿ";
+            string syms = "Ğ°Ğ±Ğ²Ğ³Ğ´ĞµĞ¶Ğ·Ğ¸Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰Ñ‹ÑŒÑÑÑ";
             int[,] bigram = g.getWeightMatrix;
             for (int i = 0; i < 10000; i++)
             {
@@ -47,7 +47,7 @@ namespace UnitTests
             CharPairGenerator g = new CharPairGenerator();
             double eps = 0.005;
             int count = 10000;
-            string syms = "àáâãäåæçèéêëìíîïğñòóôõö÷øùûüışÿ";
+            string syms = "Ğ°Ğ±Ğ²Ğ³Ğ´ĞµĞ¶Ğ·Ğ¸Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚ÑƒÑ„Ñ…Ñ†Ñ‡ÑˆÑ‰Ñ‹ÑŒÑÑÑ";
             int[,] bigram = g.getWeightMatrix;
             int sum = g.getSum;
             string text = g.getText(count);
@@ -65,10 +65,10 @@ namespace UnitTests
             WordGenerator g = new WordGenerator();
             string[] data = g.getData;
             int[] weights = g.getWeights;
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "âğåìÿ")], 768250);
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "îí")], 4947719);
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "òàì")], 389633);
-            Assert.AreEqual(System.Array.IndexOf(data, "òóäà"), -1);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ğ²Ñ€ĞµĞ¼Ñ")], 768250);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ğ¾Ğ½")], 4947719);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ñ‚Ğ°Ğ¼")], 389633);
+            Assert.AreEqual(System.Array.IndexOf(data, "Ñ‚ÑƒĞ´Ğ°"), -1);
         }
 
         [TestMethod]
@@ -105,10 +105,10 @@ namespace UnitTests
             WordPairGenerator g = new WordPairGenerator();
             string[] data = g.getData;
             int[] weights = g.getWeights;
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "îá ıòîì")], 45100);
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "÷òî ó")], 35149);
-            Assert.AreEqual(weights[System.Array.IndexOf(data, "òàêèì îáğàçîì")], 30278);
-            Assert.AreEqual(System.Array.IndexOf(data, "òåì íå"), -1);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ğ¾Ğ± ÑÑ‚Ğ¾Ğ¼")], 45100);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ñ‡Ñ‚Ğ¾ Ñƒ")], 35149);
+            Assert.AreEqual(weights[System.Array.IndexOf(data, "Ñ‚Ğ°ĞºĞ¸Ğ¼ Ğ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ¼")], 30278);
+            Assert.AreEqual(System.Array.IndexOf(data, "Ñ‚ĞµĞ¼ Ğ½Ğµ"), -1);
         }
 
         [TestMethod]
@@ -140,3 +140,4 @@ namespace UnitTests
         }
     }
 }
+
